@@ -13,7 +13,7 @@ with open("requirements.txt", "r") as fh:
     install_requires = fh.read().split("\n")
 
 setuptools.setup(
-    name="netmiko_multihop",
+    name="netmiko_multihopRT",
     version=version,
     author="Felix Li",
     author_email="immphoenix@gmail.com",
