@@ -13,14 +13,14 @@ with open("requirements.txt", "r") as fh:
     install_requires = fh.read().split("\n")
 
 setuptools.setup(
-    name="netmiko_multihop",
+    name="netmiko_mhrt",
     version=version,
     author="Felix Li",
     author_email="immphoenix@gmail.com",
     description="a forked version of netmiko_multihop",
     long_description=long_description,
     long_description_content_type="text/x-rst",
-    url="https://github.com/1mmortalPhoenix/netmiko_multihop",
+    url="https://github.com/1mmortalPhoenix/netmiko_mhrt",
     packages=setuptools.find_packages(),
     include_package_data=True,
     package_data={"": ["*"]},
