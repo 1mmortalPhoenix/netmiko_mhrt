@@ -2,21 +2,8 @@ import setuptools
 import os
 from subprocess import check_output
 
-command = "git describe --tags --dirty"
-version_format = ("{tag}.dev{commitcount}+{gitsha}",)
 
-
-def format_version(version, fmt):
-    parts = version.split("-")
-    assert len(parts) in (3, 4)
-    dirty = len(parts) == 4
-    tag, count, sha = parts[:3]
-    if count == "0" and not dirty:
-        return tag
-    return fmt.format(tag=tag, commitcount=count, gitsha=sha.lstrip("g"))
-
-
-version = check_output(command.split()).decode("utf-8").strip()
+version = "1.0.0"
 
 
 with open("README.rst", "r") as fh:
@@ -28,12 +15,12 @@ with open("requirements.txt", "r") as fh:
 setuptools.setup(
     name="netmiko_multihop",
     version=version,
-    author="Wilhelm Putz",
-    author_email="wp@aci.guru",
-    description="Out of tree netmiko monkeypatch for multihop capability",
+    author="Felix Li",
+    author_email="immphoenix@gmail.com",
+    description="a forked version of netmiko_multihop",
     long_description=long_description,
     long_description_content_type="text/x-rst",
-    url="https://github.com/jinjamator/netmiko_multihop",
+    url="https://github.com/1mmortalPhoenix/netmiko_multihop",
     packages=setuptools.find_packages(),
     include_package_data=True,
     package_data={"": ["*"]},
