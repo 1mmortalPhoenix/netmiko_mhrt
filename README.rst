@@ -17,7 +17,7 @@ Installation
 
 Install the netmiko_multihop package by running:
 
-    pip3 install netmiko-multihop
+    pip3 install netmiko-mhrt
 
 Usage
 -----
@@ -83,14 +83,14 @@ Usage
 
 Patch
 ----------
-    # in some cases network device may have a warning banner following the login banner, and need user input (yes or a simple enter) to continue.
-    # This patch pads in an "enter" command in the channel when "continue:" or "#" is detected during jump_to() process.
+    In some cases network device may have a warning banner following the login banner, and need user input (yes or a simple enter) to continue.
+    This patch pads in an "enter" command in the channel when "continue:" or "#" is detected during jump_to() process.
 
 Contribute
 ----------
 
-- Issue Tracker: https://github.com/1mmphoenix/netmiko_mhrt/issues
-- Source Code: https://github.com/1mmphgoenix/netmiko_mhrt
+- Issue Tracker: https://github.com/1mmortalPhoenix/netmiko_mhrt/issues
+- Source Code: https://github.com/1mmortalPhoenix/netmiko_mhrt
 
 License
 -----------------
