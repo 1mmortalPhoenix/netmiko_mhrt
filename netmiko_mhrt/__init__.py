@@ -2,7 +2,7 @@ import netmiko
 from copy import deepcopy
 import logging  # noqa
 
-log = logging.getLogger(__name__)
+logger = logging.getLogger(__name__)
 
 platforms = {
     "linux": {
@@ -55,7 +55,7 @@ def jump_back(self):
     )
     netmiko.redispatch(self, prev_platform["device_type"])
     self.find_prompt()
-    log.debug(
+    logger.debug(
         f"successfully jumped back to {prev_platform['device_type']} {prev_platform['username']}@{prev_platform['ip']}"
     )
 
@@ -88,7 +88,7 @@ def jump_to(self, **kwargs):
         self.__jump_device_list = []
 
     no_log = {"password": target_password}
-    log.addFilter(netmiko.base_connection.SecretsFilter(no_log=no_log))
+    logger.addFilter(netmiko.base_connection.SecretsFilter(no_log=no_log))
 
     ssh_accept_host_pattern = platforms[self.device_type]["ssh_accept_host_pattern"]
     ssh_password_pattern = platforms[self.device_type]["ssh_password_pattern"]
@@ -103,8 +103,8 @@ def jump_to(self, **kwargs):
         ] = f"{platforms[self.device_type].get('vrf_prefix', '')}{kwargs['vrf']}"
 
     ssh_cmd_str = platforms[self.device_type]["ssh_cmd_str"].format(**cfg)
-    log.debug(ssh_cmd_str)
-
+    logger.debug(ssh_cmd_str)
+    logger.info(f"Jumping to next hop device with IP address {target_ip}...")
     try:
         result = self.send_command(
             ssh_cmd_str, f"({ssh_password_pattern})|({ssh_accept_host_pattern})"
@@ -116,6 +116,7 @@ def jump_to(self, **kwargs):
         self.send_command(ssh_accept_host_command, ssh_password_pattern)
     self.write_channel(target_password + "\n")
     self.send_command("\n", r"(continue:)|(#)")
+
 
     self.__jump_device_list.append(
         {"ip": self.host, "device_type": self.device_type, "username": self.username}

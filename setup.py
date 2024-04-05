@@ -3,7 +3,7 @@ import os
 from subprocess import check_output
 
 
-version = "1.0.3"
+version = "1.0.4"
 
 
 with open("README.rst", "r") as fh:
